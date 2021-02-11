@@ -1,0 +1,39 @@
+stages:
+  - build
+  - test
+  - deploy
+
+Build:
+  stage: build
+  script: echo "Iniciando Build"
+
+Teste Behave:
+  stage: test
+  image: python:latest
+  script:
+    # Installs Chrome
+    - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub |  apt-key add -
+    - echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' |  tee /etc/apt/sources.list.d/google-chrome.list
+    - apt-get update
+    - apt-get install google-chrome-stable -y
+    - pip install -r requirements.txt
+    - behave
+
+Teste Login:
+  stage: test
+  image: python:latest
+  script:
+     # Installs Chrome
+      - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub |  apt-key add -
+      - echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' |  tee /etc/apt/sources.list.d/google-chrome.list
+      - apt-get update
+      - apt-get install google-chrome-stable -y
+      - pip install -r requirements.txt
+      - pytest
+  allow_failure: true
+
+Deploy:
+  stage: deploy
+  script: echo "Realizando deploy"
+
+
