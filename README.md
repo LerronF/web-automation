@@ -1,6 +1,4 @@
-[![pipeline status](https://gitlab.com/itriad-systems/itriad/recompra/web-automation/badges/master/pipeline.svg)](https://gitlab.com/itriad-systems/itriad/recompra/web-automation/-/commits/master)
-
-# Itriad - Web Automation
+# Web Automation
 
 # Development Machine Dependencies
 
